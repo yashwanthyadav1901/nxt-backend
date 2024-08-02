@@ -5,11 +5,14 @@ const { default: mongoose } = require("mongoose");
 const app = express();
 const path = require("path");
 const connectDB = require("./config/dbConfig");
+const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT;
 
 connectDB();
 
 app.use(express.json());
+
+app.use(cookieParser());
 
 app.use("/", express.static(path.join(__dirname, "public")));
 
